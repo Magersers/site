@@ -1,4 +1,10 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './home.vue'
+import JQuery from 'jquery'
+import router from './router'
 
-createApp(App).mount('#app')
+
+window.$ = window.jQuery = JQuery;
+createApp(App).use(router).mount('#app')
+
+
