@@ -12,25 +12,25 @@
                 <div class="tovar">
                     <div class="gold__common"></div>
                     <h1>Купить  <i class="G"> 100 G</i>  на баланс</h1>
-                    <h2>Старная цена: <br><i class="tire">170₽</i></h2>
+                    <h2>Старая цена: <br><i class="tire">170₽</i></h2>
                     <div class="button__tovars anime">65 ₽</div>
                 </div>
                 <div class="tovar">
                      <div class="gold__uncommon"></div>
                      <h1>Купить  <i class="G"> 500 G</i>  на баланс</h1>
-                     <h2>Старная цена: <br><i class="tire">650₽</i></h2>
+                     <h2>Старая цена: <br><i class="tire">650₽</i></h2>
                      <div class="button__tovars anime">325 ₽</div>
                 </div>
                 <div class="tovar">
                      <div class="gold__rar"></div>
                      <h1>Купить  <i class="G">1 000 G</i>  на баланс</h1>
-                     <h2> Старная цена: <br> <i class="tire"> 1800₽</i></h2>
+                     <h2> Старая цена: <br> <i class="tire"> 1800₽</i></h2>
                      <div class="button__tovars anime">900 ₽</div>
                 </div>
                 <div class="tovar">
                      <div class="gold__ultrarar"></div>
                      <h1>Купить  <i class="G">3 000 G</i> на баланс</h1>
-                     <h2>Старная цена: <br> <i class="tire">3 060₽</i></h2>
+                     <h2>Старая цена: <br> <i class="tire">3 060₽</i></h2>
                      <div class="button__tovars anime">1,530 ₽</div>
                 </div>
             </div>
