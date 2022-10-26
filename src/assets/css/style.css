@@ -33,8 +33,9 @@ input::-webkit-inner-spin-button {
 }
 .modalka1,.modalka3,.modalka4, .modalka5{
     display: none;
+    margin-top: -50px;
     width: 100%;
-    height: 100%;
+    height: 120%;
     position: fixed;
     background: #2d2836ef;
     z-index: 100;
@@ -48,8 +49,10 @@ input::-webkit-inner-spin-button {
     position: absolute;
     width: 600px;
     height: 525px;
-    left: 600px;
-    top: 147px; 
+    left: 0;
+    right: 0;
+    top: 100px;
+    margin: 0 auto; 
     background: url(../img/123.svg) 20% 10% no-repeat,linear-gradient(0deg, rgba(44, 40, 48, 0.3), rgba(44, 40, 48, 0.3)), #252734;
     box-shadow: 0px 6px 60px -8px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -164,7 +167,8 @@ input::-webkit-inner-spin-button {
 select#summa option  { background-image:url(../img/Group79.svg);   }
 .modalka2{
     width: 100%;
-    height: 100%;
+    height: 110%;
+    margin-top: -50px;
     position: fixed;
     background: #2d2836ef;
     z-index: 100;
@@ -174,7 +178,9 @@ select#summa option  { background-image:url(../img/Group79.svg);   }
 .modalka3__inner{
     position: absolute;
     top: 200px;
-    left: 400px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
     width: 951px;
     height: 535px;
     background: url(../img/vg.svg) 0 20% no-repeat,linear-gradient(0deg, rgba(44, 40, 48, 0.3), rgba(44, 40, 48, 0.3)), #252734;
@@ -516,7 +522,9 @@ select#summa option  { background-image:url(../img/Group79.svg);   }
     position: absolute;
     width: 951px;
     height: 1104px;
-    left: 25%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     top: 50px;
     padding-left: 34px;
     padding-right: 34px;
@@ -528,7 +536,9 @@ select#summa option  { background-image:url(../img/Group79.svg);   }
     position: absolute;
     width: 1188px;
     height: 750px;
-    left: 341px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     top: 90px;
     background: linear-gradient(0deg, rgba(44, 40, 48, 0.3), rgba(44, 40, 48, 0.3)), #252734;
     box-shadow: 0px 6px 60px -8px rgba(0, 0, 0, 0.25);
@@ -2567,7 +2577,7 @@ header a{
 .block1{
     width: 136px;
     height: 68px;
-    background: url(http://localhost:8080/img/game.64fe1884.svg) 50% 50% no-repeat,linear-gradient(270deg, rgba(255, 146, 43, 0.15) 20.31%, rgba(0, 0, 0, 0) 100%), #38333C;
+    background: url(../img/game.svg) 50% 50% no-repeat,linear-gradient(270deg, rgba(255, 146, 43, 0.15) 20.31%, rgba(0, 0, 0, 0) 100%), #38333C;
     background-size: cover;
 }
 .valuta{
@@ -2580,7 +2590,7 @@ header a{
 .block2{
     width: 136px;
     height: 68px;
-    background: url(http://localhost:8080/img/game1.f55cdd0d.svg) 50% 50% no-repeat,linear-gradient(283.22deg, rgba(0, 148, 255, 0.15) 16.23%, rgba(0, 0, 0, 0) 79.88%), #38333C;
+    background: url(../img/game1.svg) 50% 50% no-repeat,linear-gradient(283.22deg, rgba(0, 148, 255, 0.15) 16.23%, rgba(0, 0, 0, 0) 79.88%), #38333C;
     background-size: cover;
 }
 .block1 h1, .block2 h1 {
