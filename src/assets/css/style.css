@@ -1049,6 +1049,7 @@ header a{
     font-weight: 700;
     font-size: 16px;
     color: #FFFFFF;  
+    transition: all .22s;
     cursor: pointer;  
 }
 .buttonn2{
@@ -1065,6 +1066,7 @@ header a{
     height: 58px;
     width: 211px; 
     cursor: pointer;
+    transition: all .22s;
 }
 .check__box{
     padding-right: 20px;
