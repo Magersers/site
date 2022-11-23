@@ -1,5 +1,6 @@
 <template style='overflow-x:hidden;'>
  <router-link to="/" class="router">Главная страница</router-link> |
+    <button @click="store.getMe()">AAAAA</button>
     <router-link to="/about" class="router">Личный кабинет</router-link>
     <router-link to="/help" class="router"> Помощь </router-link>
     <router-link to="/" class="router" onclick = "window.$('.modalka1').show()"> Окно 1</router-link> 
@@ -32,11 +33,27 @@
 import './assets/css/style.css';
 import './assets/fonts/stylesheet.css';
 import helpAll from './components/helpAll.vue'
+import { useStore } from './store';
+import { useTokenService } from './tokenService';
+import { setInterceptors } from './axiosRelated/axiosInterceptors';
+
 
 export default {
   name: 'App',
   components: {
     helpAll
+  },
+  setup() {
+    console.log('APP SETUP !!!!!!!!!!!!')
+    const store = useStore()
+    const tokenService = useTokenService();
+    setInterceptors(tokenService)
+    tokenService.doCreate({email: 'tabalex2005@gmail.com', password: 'tabalex13'})
+    // axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.tokenAccess 
+
+    return {
+      store
+    }
   },
 }
 </script>
