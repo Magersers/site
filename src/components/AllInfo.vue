@@ -4,9 +4,9 @@
     <div class="allinfo__inner">
       <div>
       <ul>
-       <img src="@/assets/img/i1.svg" alt=""> <li> <p>Онлайн <br><span>225</span></p></li>
-        <img src="@/assets/img/i2.svg" alt=""><li><p>Кол-во пользователей <br> <span>3 225</span></p></li>
-        <img src="@/assets/img/i3.svg" alt=""><li><p>Общее кол-во покупок <br> <span>76 225</span></p></li>
+       <img src="@/assets/img/i1.svg" alt=""> <li> <p>Онлайн <br><span> {{store.stats.users_online}}</span></p></li>
+        <img src="@/assets/img/i2.svg" alt=""><li><p>Кол-во пользователей <br> <span> {{store.stats.total_users}}</span></p></li>
+        <img src="@/assets/img/i3.svg" alt=""><li><p>Общее кол-во покупок <br> <span> {{store.stats.total_transactions}}</span></p></li>
       </ul></div>
       <div>
       <ul class="social">
@@ -23,8 +23,16 @@
 </template>
 
 <script>
+import { useStore } from '@/store';
+
 export default {
-  name: 'AllInfo'
+  name: 'AllInfo',
+  setup() {
+    const store = useStore();
+    return {
+      store
+    }
+  }
 }
 </script>
 

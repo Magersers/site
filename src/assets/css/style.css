@@ -2,6 +2,12 @@ h1{
     margin: 0;
     padding: 0;
 }
+div {
+    transition: all .22s;
+}
+button {
+    transition: all .22s;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

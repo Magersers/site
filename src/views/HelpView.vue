@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-      <HeaderNoAut/>
+      <HeaderHead/>
     <LifeLenta/>
     <AllInfo/>
     <helpBlock/>
@@ -14,7 +14,7 @@
   import AllInfo from '../components/AllInfo.vue'
   import LifeLenta from '../components/LifeLenta.vue'
   import footeR from '../components/footer.vue'
-  import HeaderNoAut from '../components/headerNoAut.vue'
+  import HeaderHead from '../components/HeaderHead.vue'
   import helP from '../components/helP.vue'
   import helpBlock from '../components/helpBlock.vue'
   import FAQ from '../components/FAQ.vue'
@@ -29,7 +29,7 @@
       AllInfo,
       LifeLenta,
       footeR,
-      HeaderNoAut,
+      HeaderHead,
       helP,
       helpBlock,
       FAQ

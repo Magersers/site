@@ -6,7 +6,8 @@ import axiosInstance from '@/axiosRelated/axiosInstance';
 export const useStore = defineStore('Store', {
     state: () => ({
         user: {},
-        tokenService: useTokenService()
+        tokenService: useTokenService(),
+        stats: {}
     }),
     actions: {
         async getMe() {
@@ -16,6 +17,13 @@ export const useStore = defineStore('Store', {
             return response.data;
 
         },
+
+        async getStats() {
+            const response = await axiosInstance.get('stats/', {});
+            this.stats = response.data;
+            console.log(this.stats);
+            return response.data;
+        }
     },
     getters: {
     

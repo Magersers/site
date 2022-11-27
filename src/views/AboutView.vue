@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HeaderNoAut/>
+    <HeaderHead/>
   <LifeLenta/>
   <AllInfo/>
   <profiL/>
@@ -13,7 +13,7 @@
 import AllInfo from '../components/AllInfo.vue'
 import LifeLenta from '../components/LifeLenta.vue'
 import footeR from '../components/footer.vue'
-import HeaderNoAut from '../components/headerNoAut.vue'
+import HeaderHead from '../components/HeaderHead.vue'
 import profiL from '../components/profil.vue'
 import pokupkI from '../components/pokupki.vue'
 // @ is an alias to /src
@@ -25,7 +25,7 @@ export default {
     AllInfo,
     LifeLenta,
     footeR,
-    HeaderNoAut,
+    HeaderHead,
     profiL,
     pokupkI
   

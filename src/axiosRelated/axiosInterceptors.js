@@ -8,7 +8,6 @@ export const setInterceptors = async tokenService => {
         async config => {
             const access = tokenService.access;
             if (access === '' &&  config.url !== 'auth/jwt/create/') {
-                console.log('No token');
                 await tokenService.doCreate({email: 'tabalex2005@gmail.com', password: 'tabalex13'});
             }
             console.log(config.url);

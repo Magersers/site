@@ -48,7 +48,16 @@ export default {
     const store = useStore()
     const tokenService = useTokenService();
     setInterceptors(tokenService)
-    tokenService.doCreate({email: 'tabalex2005@gmail.com', password: 'tabalex13'})
+    tokenService.doCreate({email: 'tabalex2005@gmail.com', password: 'tabalex13'}).then(
+      () => {
+        store.getMe().then(
+          () => {
+            store.getStats()
+          }
+        )
+        
+      }
+    )
     // axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.tokenAccess 
 
     return {
