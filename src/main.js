@@ -3,8 +3,6 @@ import App from './home.vue';
 import JQuery from 'jquery';
 import router from './router';
 import {createPinia} from 'pinia';
-// import GSignInButton from 'vue-google-signin-button';
-// import vue3GoogleLogin from 'vue3-google-login';
 import GoogleSignInPlugin from "vue3-google-signin";
 
 

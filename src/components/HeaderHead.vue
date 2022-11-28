@@ -26,7 +26,7 @@
           <a href=""><i><img src="@/assets/img/arrow_left.svg" alt=""></i> </a> <div class="pass"></div>
         </div>
         
-        <!-- <div class="oplataa" v-if="userIsDefined">
+        <div class="oplataa" v-if="userIsDefined">
           <ul class="oplata">
             <li class="button__1 anime"><a href=""> <i> <img src="@/assets/img/plata1.svg" alt=""></i> Пополнить</a></li>
             <li class="button__2 anime"><a href=""> <i><img src="@/assets/img/plata2.svg" alt=""></i> Пополнить</a></li>
@@ -40,7 +40,7 @@
             <li><span class="balans__rub">{{store.user.money}} <i class="rub">₽</i></span>    <span class="balans__gold">{{store.user.gold}} <i class="G">G</i></span></li>
           </ul>
           <img src="@/assets/img/arrow__button.svg" alt="" class="arrow">
-        </div> -->
+        </div>
 
         <div class="profil"  v-if="!userIsDefined">
             <ul class="aut">
@@ -60,14 +60,27 @@ import {useStore} from '@/store';
 import {
   useTokenClient,
 } from "vue3-google-signin";
+import axios from 'axios';
 
 
 export default {
   name: 'HeaderHead',
   setup() {
     const store = useStore();
-    const handleOnSuccess = response => {
+    const handleOnSuccess = async response => {
       console.log("Access Token: ", response.access_token);
+      const authing = await axios.post(
+        'http://localhost:8000/api/dj-rest-auth/google/',
+        {
+          access_token: response.access_token,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      console.log('Authing', authing.data);
     };
 
     const handleOnError = errorResponse => {
@@ -95,7 +108,7 @@ export default {
   },
   computed: {
     userIsDefined() {
-      return Object.entries(this.store.user).length === 0;
+      return Object.entries(this.store.user).length !== 0;
     },
     handleUserName() {
       const name = this.store.user.username
@@ -113,15 +126,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .google-signin-button {
-    color: white;
-    background-color: red;
-    height: 50px;
-    font-size: 16px;
-    border-radius: 10px;
-    padding: 10px 20px 25px 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-</style>

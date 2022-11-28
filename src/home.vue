@@ -1,6 +1,5 @@
 <template style='overflow-x:hidden;'>
  <router-link to="/" class="router">Главная страница</router-link> |
-    <button @click="store.getMe()">AAAAA</button>
     <router-link to="/about" class="router">Личный кабинет</router-link>
     <router-link to="/help" class="router"> Помощь </router-link>
     <router-link to="/" class="router" onclick = "window.$('.modalka1').show()"> Окно 1</router-link> 
@@ -44,22 +43,11 @@ export default {
     helpAll
   },
   setup() {
-    console.log('APP SETUP !!!!!!!!!!!!')
     const store = useStore()
-    const tokenService = useTokenService();
-    setInterceptors(tokenService)
-    tokenService.doCreate({email: 'tabalex2005@gmail.com', password: 'tabalex13'}).then(
-      () => {
-        store.getMe().then(
-          () => {
-            store.getStats()
-          }
-        )
-        
-      }
-    )
-    // axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.tokenAccess 
-
+    setInterceptors(useTokenService())
+    
+    store.initStore()
+  
     return {
       store
     }

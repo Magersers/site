@@ -6,7 +6,7 @@
                     <div>
                         <ul>
                             <li><div class="icons__profil" style=""><i></i></div></li>
-                            <li>О Г У Р Ч И К <br> <span style="color:#0094FF;">1 900 ₽</span> <span style="color:#FF922B;">1 900 G</span></li>
+                            <li>{{store.user.username}} <br> <span style="color:#0094FF;">{{store.user.money}} ₽</span> <span style="color:#FF922B;">{{store.user.gold}} G</span></li>
                         </ul>
                     </div>
                     <div class="oplataa">
@@ -29,8 +29,8 @@
                     </div>
                 </div>
                 <div class="valuta">
-                        <div class="block1"><h1>Всего <br> куплено:</h1> <span> 934 <i class="G"> G</i></span></div>
-                        <div class="block2"><h1>Всего <br> пополнено:</h1> <span> 2 934 <i> ₽</i></span></div>
+                        <div class="block1"><h1>Всего <br> куплено:</h1> <span> {{store.user.total_gold}} <i class="G"> G</i></span></div>
+                        <div class="block2"><h1>Всего <br> пополнено:</h1> <span> {{store.user.total_money}} <i> ₽</i></span></div>
                 </div>
             </div>
         </div>
@@ -38,11 +38,23 @@
 </template>
 
 <script>
-
+import { useStore } from '@/store';
  
 
 export default {
-  name: 'profiL'
+  name: 'profiL',
+  setup() {
+    const store = useStore();
+    
+    if (Object.entries(store.user).length === 0) {
+        
+        alert('Пользователь не залогинин нахуй!!!')
+    }
+
+    return {
+        store,
+    }
+  }
 }
 </script>
 
