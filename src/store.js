@@ -6,25 +6,35 @@ import axiosInstance from '@/axiosRelated/axiosInstance';
 export const useStore = defineStore('Store', {
     state: () => ({
         user: {},
-        transactions: [],
         tokenService: useTokenService(),
         stats: {}
     }),
     actions: {
         async initStore()  {
-            await this.tokenService.doCreate({email: 'tabalex2005@gmail.com', password: 'tabalex13'});
+            const googleToken = localStorage.getItem("google_access_token");
+            if (googleToken) {
+                await this.tokenService.authByGoogle({access_token: googleToken});
+            }
             await this.getMe();
             await this.getStats();
-            await this.getTransactions();
-          },
+            this.countTransactionTotals();
+        },
+
         async getMe() {
             const response = await axiosInstance.get('users/me/', {});
             this.user = response.data;
             console.log(this.user);
+            if (this.user.avatar === "http://localhost:8000/media/default_avatar.svg") {
+                this.user.avatar = '@/assets/img/men.svg';
+            }
             return response.data;
 
         },
 
+        async updateUser(newValues) {
+            const r = await axiosInstance.put(`users/${this.user.id}`, newValues);
+            console.log(r);
+        },
         async getStats() {
             const response = await axiosInstance.get('stats/', {});
             this.stats = response.data;
@@ -32,19 +42,12 @@ export const useStore = defineStore('Store', {
             return response.data;
         },
 
-        async getTransactions() {
-            const response = await axiosInstance.get(`stats/users/${this.user.id}/transactions/`, {});
-            this.transactions = response.data;
-            console.log(this.transactions);
-            this.countTransactionTotals();
-            return response.data;
-        },
-
         countTransactionTotals() {
             let money = 0;
             let gold = 0;
+            let array = this.user ? this.user.transactions : [];
 
-            for (let i of this.transactions.results) {
+            for (let i of array) {
                 if (i.money > 0 && i.gold === 0) {
                     money += i.money;
                 } else if (i.gold > 0 && i.money < 0) {
@@ -57,7 +60,5 @@ export const useStore = defineStore('Store', {
 
         }
     },
-    getters: {
-    
-    },
+
 });

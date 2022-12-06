@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import instance from '@/axiosRelated/axiosInstance';
+import axios from 'axios';
 
 
 export const useTokenService = defineStore('tokenService', {
@@ -8,22 +9,33 @@ export const useTokenService = defineStore('tokenService', {
         refresh: ''
     }),
     actions: {
+        async authByGoogle(credentials) {
+            try {
+                const response = await axios.post(
+                    'dj-rest-auth/google/',
+                    credentials,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    }
+                );
+                const { access_token, refresh_token } = response.data;
+                this.access = access_token;
+                this.refresh = refresh_token;
+
+                return response.data;
+            
+            } catch (e) {
+                console.log(e);
+                return {};
+            }
+            
+            
+        },
+
         async doCreate(credentials) {
             try {
-                // if (this.access === '') {
-                //     const local_token = localStorage.getItem('access');
-                //     if (local_token !== null) {
-                //         const local_is_valid = await this.doVerify(local_token);
-                //         if (Object.entries(local_is_valid).length === 0) {
-                //             this.access = local_token;
-                //             this.refresh = localStorage.getItem('refresh');
-                //             return {
-                //                 access: this.access,
-                //                 refresh: this.refresh
-                //             };
-                //         }
-                //     }
-                // }
                 const response = await instance.post(
                     'auth/jwt/create/',
                     credentials,
@@ -31,8 +43,7 @@ export const useTokenService = defineStore('tokenService', {
                 const { access, refresh } = response.data;
                 this.access = access;
                 this.refresh = refresh;
-                // localStorage.setItem('access', this.access);
-                // localStorage.setItem('refresh', this.refresh);
+
                 return response.data;
             
             } catch (e) {

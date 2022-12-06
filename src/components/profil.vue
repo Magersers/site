@@ -5,7 +5,7 @@
                 <div class="profill__info">
                     <div>
                         <ul>
-                            <li><div class="icons__profil" style=""><i></i></div></li>
+                                <li><div class="icons__profil"><img :src="store.user.avatar" alt="ava"/></div></li>
                             <li>{{store.user.username}} <br> <span style="color:#0094FF;">{{store.user.money}} ₽</span> <span style="color:#FF922B;">{{store.user.gold}} G</span></li>
                         </ul>
                     </div>
@@ -23,7 +23,8 @@
                             <h1>Ваша аватарка в Standoff 2</h1>
                             <p>Для вывода скина, необходимо установить аватарку как в вашем аккаунте Standoff 2</p>
                         </div>
-                        <div class="download__button anime">
+                        <input type="file" :value="uploadedPhoto" @change='handleAvatarChange' id="avatar_input"/>
+                        <div class="download__button anime" @click="handleUploadButtonPress">
                             <i></i> Загрузить
                         </div>
                     </div>
@@ -39,26 +40,31 @@
 
 <script>
 import { useStore } from '@/store';
- 
+import { ref } from 'vue'; 
+
 
 export default {
   name: 'profiL',
   setup() {
     const store = useStore();
-    
-    if (Object.entries(store.user).length === 0) {
-        
-        alert('Пользователь не залогинин нахуй!!!')
-    }
 
     return {
         store,
+        uploadedPhoto: ref(null)
     }
-  }
+  },
+  methods: {
+    handleAvatarChange(event) {
+        const photos = event.target.files
+
+        if (photos.length > 0) {
+            this.uploadedPhoto = photos[0]
+            this.store.updateUser({avatar: this.uploadedPhoto})
+        }
+    },
+    handleUploadButtonPress() {
+        document.getElementById('avatar_input').click()
+    }
+  },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
-
-</style>

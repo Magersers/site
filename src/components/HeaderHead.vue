@@ -5,7 +5,7 @@
   <header class="header__A">
             <div class="header__addapt">
               <div class="logo__logo"></div>
-              <div>
+              <div v-if="!userIsDefined">
                 <div class="but__adapt1"></div>
                 <div class="but__adapt2"></div>
             </div>
@@ -34,7 +34,7 @@
         </div>
         
         <div class="profil" v-if="userIsDefined">
-          <div class="icons__profil" style=""><i></i></div>
+          <div class="icons__profil" style=""><img :src="store.user.avatar" alt="ava"/></div>
           <ul class="profil__name">
             <li>{{handleUserName}}</li>
             <li><span class="balans__rub">{{store.user.money}} <i class="rub">₽</i></span>    <span class="balans__gold">{{store.user.gold}} <i class="G">G</i></span></li>
@@ -44,7 +44,6 @@
 
         <div class="profil"  v-if="!userIsDefined">
             <ul class="aut">
-          
                 <li class="button__aut1 anime" @click="login()"> <i> <img src="@/assets/img/Google.svg" alt=""></i> Google</li>
                 <li class="button__aut2 anime"> <a :href="vkUrl"><i><img src="@/assets/img/vk__orange.svg" alt=""></i> Вконтакте</a></li>
             </ul>
@@ -60,34 +59,26 @@ import {useStore} from '@/store';
 import {
   useTokenClient,
 } from "vue3-google-signin";
-import axios from 'axios';
+import { useTokenService } from '@/tokenService';
 
 
 export default {
   name: 'HeaderHead',
   setup() {
     const store = useStore();
+    const tokenService = useTokenService()
     const handleOnSuccess = async response => {
-      console.log("Access Token: ", response.access_token);
-      const authing = await axios.post(
-        'http://localhost:8000/api/dj-rest-auth/google/',
-        {
-          access_token: response.access_token,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-      )
-      console.log('Authing', authing.data);
+      const { access_token } = response;
+      console.log("Access Token: ", access_token);
+      localStorage.setItem("google_access_token", access_token)
+      await tokenService.authByGoogle({ access_token })
     };
 
     const handleOnError = errorResponse => {
       console.log("Error: ", errorResponse);
     };
     
-    const { isReady, login } = useTokenClient({
+    const { login } = useTokenClient({
       onSuccess: handleOnSuccess,
       onError: handleOnError,
       // 
@@ -95,7 +86,6 @@ export default {
 
     return {
       store,
-      isReady, 
       login,
       handleOnSuccess,
       handleOnError,

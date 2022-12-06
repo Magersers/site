@@ -15,7 +15,7 @@
                 <div class="baton"> <i></i></div>
             </div>
             <div class="big__bottom">
-                <img src="/img/ruki.797eda98.svg" alt="">Сотрудничество
+                <img src="/img/ruki.1feaee38.svg" alt="">Сотрудничество
             </div>
             <div>
                 <ul class="fix">

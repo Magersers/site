@@ -1,24 +1,22 @@
-h1{
+*{
+    box-sizing: border-box;
+    font-family: 'Gilroy';
+    transition: all .22s;
+}
+
+h1 {
     margin: 0;
     padding: 0;
 }
-div {
-    transition: all .22s;
-}
-button {
-    transition: all .22s;
-}
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-*{
-    box-sizing: border-box;
-    font-family: 'Gilroy';
-}
+
 .adapt__menu__inner{
     display: none;
 }
@@ -760,14 +758,15 @@ header a{
     width: 45px;
     height: 45px;
     border-radius: 10px;
-    background: url(../img/men.svg) 50% 50% no-repeat;
+    background: 50% 50% no-repeat;
     background-size: contain;
-    background-color: #FF922B;
+    background-color: rgba(0, 0, 0, 0.2);
 }
-.icons__profil i {
-    height: 20.011531829833984px;
-    width: 19.9017276763916px;
-    display: block;
+.icons__profil img {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
 }
 .profil__name li{
     display: list-item;
@@ -1613,6 +1612,7 @@ header a{
     bottom: 0;
     border-radius: 0 0 20px 20px;
 }
+
 .profill__info ul{
     display: flex;
     align-items: center;
@@ -1757,6 +1757,11 @@ header a{
     left: 14px;
     top: 12px;
 }
+
+#avatar_input {
+    display: none;
+}
+
 .pokupki{
     margin-top: 30px;
 }

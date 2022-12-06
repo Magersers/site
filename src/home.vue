@@ -15,7 +15,7 @@
           <li> <img src="@/assets/img/vasdasd.svg" alt=""> F.a.q</li>
           <li> <img src="@/assets/img/exit.svg" alt=""> Выйти</li>
         </ul>
-        <div class="seti"><h1> Мы в соц. сетях</h1><a href=""><img src="/img/vk.f3811945.svg" alt=""></a><a href=""><img src="/img/tg.ad241edf.svg" alt=""></a><a href=""><img src="/img/tik.b7dc7dd8.svg" alt=""></a><a href=""><img src="/img/yt.fa7880df.svg" alt=""></a></div>
+        <div class="seti"><h1> Мы в соц. сетях</h1><a href=""><img src="/img/vk.eae4f62d.svg" alt=""></a><a href=""><img src="/img/tg.9f53eb4a.svg" alt=""></a><a href=""><img src="/img/tik.fe2546de.svg" alt=""></a><a href=""><img src="/img/yt.fd20f3e3.svg" alt=""></a></div>
       </div>
       <div class="adapt__menu__inner">
           <ul>
@@ -44,10 +44,9 @@ export default {
   },
   setup() {
     const store = useStore()
-    setInterceptors(useTokenService())
-    
+    const tokenService = useTokenService()
+    setInterceptors(tokenService)
     store.initStore()
-  
     return {
       store
     }
